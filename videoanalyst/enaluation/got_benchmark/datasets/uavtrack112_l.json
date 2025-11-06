@@ -1,0 +1,566 @@
+{
+    "UAVTRACK112_L": {
+        "air conditioning box1": {
+            "start_frame": 1,
+            "end_frame": 437,
+            "folder_name": "air conditioning box1"
+        },
+        "air_conditioning_box2": {
+            "start_frame": 1,
+            "end_frame": 1847,
+            "folder_name": "air_conditioning_box2"
+        },
+        "basketball player1": {
+            "start_frame": 1,
+            "end_frame": 1047,
+            "folder_name": "basketball player1"
+        },
+        "basketball player1_1-n": {
+            "start_frame": 1,
+            "end_frame": 312,
+            "folder_name": "basketball player1_1-n"
+        },
+        "basketball player1_2-n": {
+            "start_frame": 1,
+            "end_frame": 1567,
+            "folder_name": "basketball player1_2-n"
+        },
+        "basketball player2": {
+            "start_frame": 1,
+            "end_frame": 1302,
+            "folder_name": "basketball player2"
+        },
+        "basketball player2-n": {
+            "start_frame": 1,
+            "end_frame": 1225,
+            "folder_name": "basketball player2-n"
+        },
+        "basketball player3": {
+            "start_frame": 1,
+            "end_frame": 1320,
+            "folder_name": "basketball player3"
+        },
+        "basketball player3-n": {
+            "start_frame": 1,
+            "end_frame": 732,
+            "folder_name": "basketball player3-n"
+        },
+        "basketball player4-n": {
+            "start_frame": 1,
+            "end_frame": 408,
+            "folder_name": "basketball player4-n"
+        },
+        "bell tower": {
+            "start_frame": 1,
+            "end_frame": 2061,
+            "folder_name": "bell tower"
+        },
+        "bike1": {
+            "start_frame": 1,
+            "end_frame": 180,
+            "folder_name": "bike1"
+        },
+        "bike2": {
+            "start_frame": 1,
+            "end_frame": 840,
+            "folder_name": "bike2"
+        },
+        "bike3": {
+            "start_frame": 1,
+            "end_frame": 234,
+            "folder_name": "bike3"
+        },
+        "bike4_1": {
+            "start_frame": 1,
+            "end_frame": 686,
+            "folder_name": "bike4_1"
+        },
+        "bike4_2": {
+            "start_frame": 1,
+            "end_frame": 1129,
+            "folder_name": "bike4_2"
+        },
+        "bike5": {
+            "start_frame": 1,
+            "end_frame": 1188,
+            "folder_name": "bike5"
+        },
+        "bike6": {
+            "start_frame": 1,
+            "end_frame": 1118,
+            "folder_name": "bike6"
+        },
+        "bike7_1": {
+            "start_frame": 1,
+            "end_frame": 301,
+            "folder_name": "bike7_1"
+        },
+        "bike7_2": {
+            "start_frame": 1,
+            "end_frame": 338,
+            "folder_name": "bike7_2"
+        },
+        "bike8": {
+            "start_frame": 1,
+            "end_frame": 327,
+            "folder_name": "bike8"
+        },
+        "bike9_1": {
+            "start_frame": 1,
+            "end_frame": 401,
+            "folder_name": "bike9_1"
+        },
+        "bike9_2": {
+            "start_frame": 1,
+            "end_frame": 321,
+            "folder_name": "bike9_2"
+        },
+        "building1_1": {
+            "start_frame": 1,
+            "end_frame": 1140,
+            "folder_name": "building1_1"
+        },
+        "building1_2": {
+            "start_frame": 1,
+            "end_frame": 1036,
+            "folder_name": "building1_2"
+        },
+        "bus1-n": {
+            "start_frame": 1,
+            "end_frame": 1092,
+            "folder_name": "bus1-n"
+        },
+        "bus2-n": {
+            "start_frame": 1,
+            "end_frame": 716,
+            "folder_name": "bus2-n"
+        },
+        "car1": {
+            "start_frame": 1,
+            "end_frame": 1509,
+            "folder_name": "car1"
+        },
+        "car1-n": {
+            "start_frame": 1,
+            "end_frame": 1291,
+            "folder_name": "car1-n"
+        },
+        "car2": {
+            "start_frame": 1,
+            "end_frame": 486,
+            "folder_name": "car2"
+        },
+        "car2-n": {
+            "start_frame": 1,
+            "end_frame": 489,
+            "folder_name": "car2-n"
+        },
+        "car3": {
+            "start_frame": 1,
+            "end_frame": 2371,
+            "folder_name": "car3"
+        },
+        "car4": {
+            "start_frame": 1,
+            "end_frame": 1302,
+            "folder_name": "car4"
+        },
+        "car5": {
+            "start_frame": 1,
+            "end_frame": 2625,
+            "folder_name": "car5"
+        },
+        "car6_1": {
+            "start_frame": 1,
+            "end_frame": 1920,
+            "folder_name": "car6_1"
+        },
+        "car6_2": {
+            "start_frame": 1,
+            "end_frame": 1123,
+            "folder_name": "car6_2"
+        },
+        "car7_1": {
+            "start_frame": 1,
+            "end_frame": 973,
+            "folder_name": "car7_1"
+        },
+        "car7_2": {
+            "start_frame": 1,
+            "end_frame": 1968,
+            "folder_name": "car7_2"
+        },
+        "car7_3": {
+            "start_frame": 1,
+            "end_frame": 1596,
+            "folder_name": "car7_3"
+        },
+        "car8": {
+            "start_frame": 1,
+            "end_frame": 183,
+            "folder_name": "car8"
+        },
+        "car9_1": {
+            "start_frame": 1,
+            "end_frame": 1745,
+            "folder_name": "car9_1"
+        },
+        "car9_2": {
+            "start_frame": 1,
+            "end_frame": 1885,
+            "folder_name": "car9_2"
+        },
+        "car10": {
+            "start_frame": 1,
+            "end_frame": 291,
+            "folder_name": "car10"
+        },
+        "car11": {
+            "start_frame": 1,
+            "end_frame": 142,
+            "folder_name": "car11"
+        },
+        "car12": {
+            "start_frame": 1,
+            "end_frame": 78,
+            "folder_name": "car12"
+        },
+        "car13": {
+            "start_frame": 1,
+            "end_frame": 184,
+            "folder_name": "car13"
+        },
+        "car14": {
+            "start_frame": 1,
+            "end_frame": 1690,
+            "folder_name": "car14"
+        },
+        "car15": {
+            "start_frame": 1,
+            "end_frame": 159,
+            "folder_name": "car15"
+        },
+        "car16_1": {
+            "start_frame": 1,
+            "end_frame": 100,
+            "folder_name": "car16_1"
+        },
+        "car16_2": {
+            "start_frame": 1,
+            "end_frame": 254,
+            "folder_name": "car16_2"
+        },
+        "car16_3": {
+            "start_frame": 1,
+            "end_frame": 168,
+            "folder_name": "car16_3"
+        },
+        "car17": {
+            "start_frame": 1,
+            "end_frame": 221,
+            "folder_name": "car17"
+        },
+        "car18": {
+            "start_frame": 1,
+            "end_frame": 171,
+            "folder_name": "car18"
+        },
+        "container": {
+            "start_frame": 1,
+            "end_frame": 474,
+            "folder_name": "container"
+        },
+        "couple": {
+            "start_frame": 1,
+            "end_frame": 1826,
+            "folder_name": "couple"
+        },
+        "courier1": {
+            "start_frame": 1,
+            "end_frame": 703,
+            "folder_name": "courier1"
+        },
+        "courier2": {
+            "start_frame": 1,
+            "end_frame": 1705,
+            "folder_name": "courier2"
+        },
+        "dark car1-n": {
+            "start_frame": 1,
+            "end_frame": 577,
+            "folder_name": "dark car1-n"
+        },
+        "dark car2-n": {
+            "start_frame": 1,
+            "end_frame": 939,
+            "folder_name": "dark car2-n"
+        },
+        "duck1_1": {
+            "start_frame": 1,
+            "end_frame": 2175,
+            "folder_name": "duck1_1"
+        },
+        "duck1_2": {
+            "start_frame": 1,
+            "end_frame": 1551,
+            "folder_name": "duck1_2"
+        },
+        "duck2": {
+            "start_frame": 1,
+            "end_frame": 1131,
+            "folder_name": "duck2"
+        },
+        "duck3": {
+            "start_frame": 1,
+            "end_frame": 901,
+            "folder_name": "duck3"
+        },
+        "electric box": {
+            "start_frame": 1,
+            "end_frame": 1164,
+            "folder_name": "electric box"
+        },
+        "excavator": {
+            "start_frame": 1,
+            "end_frame": 630,
+            "folder_name": "excavator"
+        },
+        "football player1_1": {
+            "start_frame": 1,
+            "end_frame": 519,
+            "folder_name": "football player1_1"
+        },
+        "football player1_2": {
+            "start_frame": 1,
+            "end_frame": 1202,
+            "folder_name": "football player1_2"
+        },
+        "football player1_3": {
+            "start_frame": 1,
+            "end_frame": 1003,
+            "folder_name": "football player1_3"
+        },
+        "football player2_1": {
+            "start_frame": 1,
+            "end_frame": 546,
+            "folder_name": "football player2_1"
+        },
+        "football player2_2": {
+            "start_frame": 1,
+            "end_frame": 1173,
+            "folder_name": "football player2_2"
+        },
+        "group1": {
+            "start_frame": 1,
+            "end_frame": 1321,
+            "folder_name": "group1"
+        },
+        "group2": {
+            "start_frame": 1,
+            "end_frame": 1534,
+            "folder_name": "group2"
+        },
+        "group3_1": {
+            "start_frame": 1,
+            "end_frame": 163,
+            "folder_name": "group3_1"
+        },
+        "group3_2": {
+            "start_frame": 1,
+            "end_frame": 250,
+            "folder_name": "group3_2"
+        },
+        "group3_3": {
+            "start_frame": 1,
+            "end_frame": 300,
+            "folder_name": "group3_3"
+        },
+        "group4": {
+            "start_frame": 1,
+            "end_frame": 329,
+            "folder_name": "group4"
+        },
+        "group4_1": {
+            "start_frame": 1,
+            "end_frame": 299,
+            "folder_name": "group4_1"
+        },
+        "group4_2": {
+            "start_frame": 1,
+            "end_frame": 175,
+            "folder_name": "group4_2"
+        },
+        "hiker1": {
+            "start_frame": 1,
+            "end_frame": 486,
+            "folder_name": "hiker1"
+        },
+        "hiker2": {
+            "start_frame": 1,
+            "end_frame": 420,
+            "folder_name": "hiker2"
+        },
+        "human": {
+            "start_frame": 1,
+            "end_frame": 1605,
+            "folder_name": "human"
+        },
+        "human1": {
+            "start_frame": 1,
+            "end_frame": 90,
+            "folder_name": "human1"
+        },
+        "human2": {
+            "start_frame": 1,
+            "end_frame": 224,
+            "folder_name": "human2"
+        },
+        "human3": {
+            "start_frame": 1,
+            "end_frame": 143,
+            "folder_name": "human3"
+        },
+        "human4": {
+            "start_frame": 1,
+            "end_frame": 20,
+            "folder_name": "human4"
+        },
+        "human5": {
+            "start_frame": 1,
+            "end_frame": 208,
+            "folder_name": "human5"
+        },
+        "island": {
+            "start_frame": 1,
+            "end_frame": 1969,
+            "folder_name": "island"
+        },
+        "jogging1": {
+            "start_frame": 1,
+            "end_frame": 324,
+            "folder_name": "jogging1"
+        },
+        "jogging2": {
+            "start_frame": 1,
+            "end_frame": 1717,
+            "folder_name": "jogging2"
+        },
+        "motor1": {
+            "start_frame": 1,
+            "end_frame": 57,
+            "folder_name": "motor1"
+        },
+        "motor2": {
+            "start_frame": 1,
+            "end_frame": 53,
+            "folder_name": "motor2"
+        },
+        "parterre1": {
+            "start_frame": 1,
+            "end_frame": 2400,
+            "folder_name": "parterre1"
+        },
+        "parterre2": {
+            "start_frame": 1,
+            "end_frame": 1705,
+            "folder_name": "parterre2"
+        },
+        "pot bunker": {
+            "start_frame": 1,
+            "end_frame": 1383,
+            "folder_name": "pot bunker"
+        },
+        "runner1": {
+            "start_frame": 1,
+            "end_frame": 333,
+            "folder_name": "runner1"
+        },
+        "runner2": {
+            "start_frame": 1,
+            "end_frame": 147,
+            "folder_name": "runner2"
+        },
+        "sand truck-n": {
+            "start_frame": 1,
+            "end_frame": 829,
+            "folder_name": "sand truck-n"
+        },
+        "swan": {
+            "start_frame": 1,
+            "end_frame": 300,
+            "folder_name": "swan"
+        },
+        "tennis player1_1": {
+            "start_frame": 1,
+            "end_frame": 850,
+            "folder_name": "tennis player1_1"
+        },
+        "tennis player1_2": {
+            "start_frame": 1,
+            "end_frame": 1655,
+            "folder_name": "tennis player1_2"
+        },
+        "tower crane": {
+            "start_frame": 1,
+            "end_frame": 866,
+            "folder_name": "tower crane"
+        },
+        "tree": {
+            "start_frame": 1,
+            "end_frame": 520,
+            "folder_name": "tree"
+        },
+        "tricycle1_1": {
+            "start_frame": 1,
+            "end_frame": 1102,
+            "folder_name": "tricycle1_1"
+        },
+        "tricycle1_2": {
+            "start_frame": 1,
+            "end_frame": 1113,
+            "folder_name": "tricycle1_2"
+        },
+        "truck": {
+            "start_frame": 1,
+            "end_frame": 1871,
+            "folder_name": "truck"
+        },
+        "truck_night": {
+            "start_frame": 1,
+            "end_frame": 1032,
+            "folder_name": "truck_night"
+        },
+        "uav1": {
+            "start_frame": 1,
+            "end_frame": 751,
+            "folder_name": "uav1"
+        },
+        "uav2": {
+            "start_frame": 1,
+            "end_frame": 1520,
+            "folder_name": "uav2"
+        },
+        "uav3_1": {
+            "start_frame": 1,
+            "end_frame": 634,
+            "folder_name": "uav3_1"
+        },
+        "uav3_2": {
+            "start_frame": 1,
+            "end_frame": 1208,
+            "folder_name": "uav3_2"
+        },
+        "uav4": {
+            "start_frame": 1,
+            "end_frame": 1533,
+            "folder_name": "uav4"
+        },
+        "uav5": {
+            "start_frame": 1,
+            "end_frame": 426,
+            "folder_name": "uav5"
+        }
+
+    }
+
+}
