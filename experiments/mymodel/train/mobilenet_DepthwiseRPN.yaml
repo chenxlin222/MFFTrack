@@ -1,0 +1,340 @@
+test:
+  track:
+    exp_name: &TEST_NAME "siamfcpp_googlenet-fulldata-dist"
+    exp_save: &TEST_SAVE "logs"
+    model:
+      backbone:
+        name: "Inception3"
+        Inception3:
+          pretrain_model_path: ""
+          crop_pad: 4
+          pruned: True
+      losses:
+        names: []
+      task_head:
+        name: "DenseboxHead"
+        DenseboxHead:
+          total_stride: 8
+          score_size: 19
+          x_size: 303
+          num_conv3x3: 2
+          head_conv_bn: [False, False]
+      task_model:
+        name: "MySiamTrack_fusion"
+        MySiamTrack_fusion:
+          pretrain_model_path: ""
+    pipeline:
+      name: "SiamFCppTracker"
+      SiamFCppTracker:
+        test_lr: 0.95
+        window_influence: 0.21
+        penalty_k: 0.04
+        total_stride: 16
+        score_size: 19
+        z_size: 80
+        x_size: 320
+        normalize: True
+        norm_mean: [ 123.675, 116.28, 103.53 ]
+        norm_std: [ 58.395, 57.12, 57.375 ]
+        to_rgb: True
+    tester:
+      names: ["VOTTester",] # (VOTTester|GOT10kTester|LaSOTTester)
+      VOTTester:
+        exp_name: *TEST_NAME
+        exp_save: *TEST_SAVE
+        device_num: 1
+        dataset_names: ["VOT2018"]
+      GOT10kTester:
+        exp_name: *TEST_NAME
+        exp_save: *TEST_SAVE
+        subsets: ["val", "test"]  # (val|test)
+      LaSOTTester:
+        exp_name: *TEST_NAME
+        exp_save: *TEST_SAVE
+        subsets: ["test"]  # (train_test|test)
+train:
+  track:
+    exp_name: &TRAIN_NAME "mobilenet_v3_small"
+    exp_save: &TRAIN_SAVE "snapshots"
+    num_processes: 1
+    model:
+      backbone:
+        name: "MobileNetV3_div"
+        Inception3:
+          crop_pad: 4
+          pruned: True
+          pretrain_model_path: "models/googlenet/inception_v3_google-1a9a5a14-961cad7697695cca7d9ca4814b17a88d.pth"
+        MobileNetV3:
+          pretrained: 'models/mobilenet/mobilenetv3_small_1.0.pth'
+        MobileNetV3_div:
+          cfgs_mode: 'small'
+          pretrained: 'models/mobilenet/mobilenetv3_small_1.0.pth'
+          used_layers: [ 6, 8, 11 ]
+          feat_channel: [ 40, 48, 96 ]
+          final_channel: &IN_CHANNELS 48
+
+      fusion:
+        name: "Fusion_M"
+        Fusion_M:
+          input_channel: 48
+          feat_fx_size: [ 8, 8, 4 ]
+          feat_fz_size: [ 20, 20, 10 ]
+          used_layers: [ 6, 8, 11 ]
+          num_heads: 3
+          num_layers: 4
+          prob_dropout: 0.1
+        Fusion:
+          input_channel: 48
+          feat_fx_size: [ 8, 8, 4 ]
+          feat_fz_size: [ 20, 20, 10 ]
+          used_layers: [ 6, 8, 11 ]
+          num_heads: 3
+          num_layers: 2
+          prob_dropout: 0.1
+      neck:
+        name: "DepthwiseRPN"
+        DepthwiseRPN:
+          anchor_num: 5
+          in_channels: 192
+          out_channels: 192
+        Transformer_fusion:
+          num_encoder_layer: 2
+          num_decoder_layer: 2
+          d_model: 64
+          nhead: 4
+          score_size_z: 8
+          score_size_x: 19
+      losses:
+        names: [
+                 "FocalLossFC",
+                 "IOULossFC",
+                 "FocalLossConv",
+                 "IOULossConv",
+        ]
+        FocalLossFC:
+          name: "cls_fc"
+          alpha: 0.75
+          gamma: 2.0
+          weight: 1.4  # 2 * 0.7
+        IOULossFC:
+          name: "reg_fc"
+          weight: 0.6  # 2 * (1 - 0.7)
+        FocalLossConv:
+          name: "cls_conv"
+          alpha: 0.75
+          gamma: 2.0
+          weight: 0.5  # 2.5 * (1 - 0.8)
+        IOULossConv:
+          name: "reg_conv"
+          weight: 2.0  # 2.5 * 0.8
+
+      task_head:
+        name: "DoubleConvFCBBoxHead"
+        DoubleConvFCBBoxHead:
+          in_channels: 192  # MID_CHANNELS * 2  128
+          num_convs: 7
+          x_size: &TRAIN_X_SIZE 320
+          score_size: 19
+          total_stride: &TOTAL_STRIDE 16
+
+
+      task_model:
+        name: "MySiamTrack_fusion"
+        MySiamTrack_fusion:
+          pretrain_model_path: ""
+          amp: &amp False
+          in_channels: 192   # 192
+          mid_channels: &MID_CHANNELS 192   # 128
+# ==================================================
+    data:
+      exp_name: *TRAIN_NAME
+      exp_save: *TRAIN_SAVE
+      num_epochs: &NUM_EPOCHS 20
+      minibatch: &MINIBATCH 4
+      num_workers: 8 # 32
+      nr_image_per_epoch: &NR_IMAGE_PER_EPOCH 300000
+      pin_memory: false
+      datapipeline:
+        name: "RegularDatapipeline"
+      sampler:
+        name: "TrackPairSampler"
+        TrackPairSampler:
+          negative_pair_ratio: 0.33
+        submodules:
+          dataset:
+            names: [
+#              "TrackingNetDataset",
+              "COCODataset",
+#              "GOT10kDataset",
+#              "DETDataset",
+#              "VIDDataset",
+#              "LaSOTDataset",
+              ]
+            GOT10kDataset: &GOT10KDATASET_CFG
+              ratio: 0.2
+              max_diff: 100
+              dataset_root: "datasets/GOT-10k"
+              subset: "train"
+            GOT10kDatasetFixed: *GOT10KDATASET_CFG  # got10k dataset with exclusion of unfixed sequences
+            LaSOTDataset:
+              ratio: 0.3
+              max_diff: 100
+              dataset_root: "datasets/LaSOT"
+              subset: "train_test"
+              check_integrity: false
+            VIDDataset:
+              ratio: 0.2
+              max_diff: 100
+              dataset_root: "datasets/ILSVRC2015"
+              subset: "train_val"
+            COCODataset:
+              ratio: 0.07
+              dataset_root: "/media/yinyuxiao/Data/my_code/my_tctrack/train_dataset/coco"
+              subsets: ["train2017",]
+            DETDataset:
+              ratio: 0.08
+              dataset_root: "datasets/ILSVRC2015"
+              subset: "train"
+            TrackingNetDataset:
+              ratio: 0.65 # set to 0.65 if all chunks are available
+              max_diff: 100
+              dataset_root: "datasets/TrackingNet"
+              subset: "train" # "train"
+              check_integrity: false  # no need to check integrity for visualization purpose
+          filter:
+            name: "TrackPairFilter"
+            TrackPairFilter:
+              max_area_rate: 0.6
+              min_area_rate: 0.001
+              max_ratio: 10
+      transformer:
+        names: ["RandomCropTransformer", ]
+        RandomCropTransformer:
+          max_scale: 0.3
+          max_shift: 0.4
+          x_size: 320
+      target:
+        name: "MyDenseboxTarget"
+        MyDenseboxTarget:
+          total_stride: 16
+          score_size: 19
+          x_size: 320
+          normalize: True
+          norm_mean: [123.675, 116.28, 103.53]
+          norm_std: [58.395, 57.12, 57.375]
+          to_rgb: True
+
+    trainer:
+#      name: "DistributedRegularTrainer"
+      name: "RegularTrainer"
+      DistributedRegularTrainer:
+        exp_name: *TRAIN_NAME
+        exp_save: *TRAIN_SAVE
+        max_epoch: 20
+        minibatch: *MINIBATCH
+        nr_image_per_epoch: *NR_IMAGE_PER_EPOCH
+        snapshot: ""
+      RegularTrainer:
+        exp_name: *TRAIN_NAME
+        exp_save: *TRAIN_SAVE
+        max_epoch: *NUM_EPOCHS
+        minibatch: *MINIBATCH
+        nr_image_per_epoch: *NR_IMAGE_PER_EPOCH
+        snapshot: ""
+      monitors:
+        names: ["TextInfo"]  # "TensorboardLogger"
+        TextInfo:
+          {}
+        TensorboardLogger:
+          exp_name: *TRAIN_NAME
+          exp_save: *TRAIN_SAVE
+
+# ==================================================
+    optim:
+      optimizer:
+        name: "AdamW"
+        AdamW:
+          # to adjust learning rate, please modify "start_lr" and "end_lr" in lr_policy module bellow
+#          amp: *amp
+          lr: 1e-4
+          weight_decay: 0.0001
+          minibatch: *MINIBATCH
+          nr_image_per_epoch: *NR_IMAGE_PER_EPOCH
+          lr_policy:
+            - >
+              {
+              "name": "MultiStageLR",
+              "lr_stages": [[100, 1e-4], [140, 1e-5], [150, 1e-6]]
+              }
+          lr_multiplier:
+            - >
+              {
+              "name": "backbone",
+              "regex": "basemodel",
+              "ratio": 1
+              }
+            - >
+              {
+              "name": "other",
+              "regex": "^((?!basemodel).)*$",
+              "ratio": 1
+              }
+        SGD:
+          # to adjust learning rate, please modify "start_lr" and "end_lr" in lr_policy module bellow
+          momentum: 0.9
+          weight_decay: 0.0001
+          minibatch: *MINIBATCH
+          nr_image_per_epoch: *NR_IMAGE_PER_EPOCH
+          lr_policy:
+          - >
+            {
+            "name": "LinearLR",
+            "start_lr": 0.000001,
+            "end_lr": 0.08,
+            "max_epoch": 1
+            }
+          - >
+            {
+            "name": "CosineLR",
+            "start_lr": 0.08,
+            "end_lr": 0.000001,
+            "max_epoch": 19
+            }
+          lr_multiplier:
+          - >
+            {
+            "name": "backbone",
+            "regex": "basemodel",
+            "ratio": 0.1
+            }
+          - >
+            {
+            "name": "other",
+            "regex": "^((?!basemodel).)*$",
+            "ratio": 1
+            }
+#      grad_modifier:
+#        name: "DynamicFreezer"
+#        DynamicFreezer:
+#          schedule:
+#          - >
+#            {
+#            "name": "isConv",
+#            "regex": "basemodel.*\\.conv\\.",
+#            "epoch": 0,
+#            "freezed": true
+#            }
+#          - >
+#            {
+#            "name": "isConvStage4",
+#            "regex": "basemodel\\.Mixed_6.*\\.conv\\.",
+#            "epoch": 10,
+#            "freezed": false
+#            }
+#          - >
+#            {
+#            "name": "isConvStage3",
+#            "regex": "basemodel\\.Mixed_5.*\\.conv\\.",
+#            "epoch": 10,
+#            "freezed": false
+#            }
